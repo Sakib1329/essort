@@ -23,6 +23,27 @@ class AppInputDecoration {
       borderSide: BorderSide(color: AppColors.primary, width: 1),
     ),
   );
+  static InputDecoration input3({String? hint}) => InputDecoration(
+    hintText: hint,
+
+    hintStyle: TextStyle(
+
+      color: AppColors.white50,
+      letterSpacing: 2,
+      fontWeight: FontWeight.w400,
+    ),
+enabledBorder: UnderlineInputBorder(
+  borderSide: BorderSide(
+    color: AppColors.darkBackground,
+  ),
+
+),
+    focusedBorder: UnderlineInputBorder(
+
+      borderSide: BorderSide(color: AppColors.primary, width: 1),
+    ),
+
+  );
 
   static InputDecoration input2({
     String? hint,

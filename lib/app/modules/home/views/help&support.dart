@@ -73,7 +73,7 @@ class Helpsupport extends GetView<HomeController> {
 
 
               },
-                  style: AppButtonStyle.elevatedButton( AppColors.primary),
+                  style: AppButtonStyle.elevatedButton( AppColors.primary,AppColors.transparent),
                   child:Text('Send',style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: 'Schuyler'),) ),
 
 

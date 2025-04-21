@@ -199,7 +199,7 @@ class Login extends GetView<AuthController> {
                     onPressed: () {
                       print('Facebook button pressed!');
                     },
-                    style:AppButtonStyle.elevatedButton(AppColors.gmailRed40),
+                    style:AppButtonStyle.elevatedButton(AppColors.gmailRed40,AppColors.transparent),
                     child: Text(
                       'Google',
                       style: TextStyle(
@@ -214,7 +214,7 @@ class Login extends GetView<AuthController> {
                     onPressed: () {
                       print('Facebook button pressed!');
                     },
-                    style:AppButtonStyle.elevatedButton(AppColors.facebookBlue40),
+                    style:AppButtonStyle.elevatedButton(AppColors.facebookBlue40,AppColors.transparent),
                     child: Text(
                       'Facebook',
                       style: TextStyle(

@@ -147,7 +147,7 @@ final HomeController controller=Get.find();
                     );
 
                   },
-                      style:AppButtonStyle.elevatedButton(AppColors.primary),child: Row(
+                      style:AppButtonStyle.elevatedButton(AppColors.primary,AppColors.transparent),child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [

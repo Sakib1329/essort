@@ -61,7 +61,7 @@ class CustomDialogWidget extends StatelessWidget {
             const Divider(color: Colors.white24, thickness: 1),
             ElevatedButton(
               onPressed: onButtonPressed,
-              style: AppButtonStyle.elevatedButton(Colors.transparent),
+              style: AppButtonStyle.elevatedButton(Colors.transparent,AppColors.transparent),
               child: Text(
                 buttonText,
                 style: const TextStyle(color: Colors.white, fontSize: 20),

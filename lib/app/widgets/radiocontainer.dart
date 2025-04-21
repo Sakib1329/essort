@@ -1,6 +1,10 @@
+import 'package:essort/app/modules/home/views/Task%20add.dart';
 import 'package:essort/app/theme/colors.dart';
 import 'package:essort/app/widgets/popupmenubutton.dart';
+import 'package:essort/app/widgets/timepickerpopup.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class Hometile extends StatelessWidget {
   final int value;
@@ -78,10 +82,10 @@ class Hometile extends StatelessWidget {
                   // Edit logic
                 },
                 onNotify: () {
-                  // Reminder logic
+                  QuickReminderPopup.show(context,title: 'Would you like set an alarm?');
                 },
                 onDelete: () {
-                  // Delete logic
+                 Get.to(TaskAdd(),transition: Transition.downToUp);
                 },
               ),
             ],

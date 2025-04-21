@@ -10,11 +10,14 @@ class LabeledExpandableTextField extends StatelessWidget {
   final String svgPath;
   final TextEditingController? controller;
   final String? hintText;
+  final bool istrue;
 
   const LabeledExpandableTextField({
     Key? key,
-    required this.label,
-    required this.svgPath,
+
+     this.label="",
+     this.svgPath="",
+    required this.istrue,
     this.controller,
     this.hintText,
   }) : super(key: key);
@@ -24,6 +27,7 @@ class LabeledExpandableTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if(istrue)
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

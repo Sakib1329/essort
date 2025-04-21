@@ -90,7 +90,7 @@ appBar: AppBar(
               children: [
 
                 ElevatedButton(onPressed: (){}, child: Text('Add New Section',style: TextStyle(color: Colors.white),),
-                style: AppButtonStyle.elevatedButton(AppColors.primary),),
+                style: AppButtonStyle.elevatedButton(AppColors.primary,AppColors.transparent),),
               ],
             ),
             SizedBox(height: 10,)
