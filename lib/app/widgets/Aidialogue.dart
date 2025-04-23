@@ -9,10 +9,7 @@ import 'Customtextfiled2.dart';
 import 'calender.dart';
 
 void showSlidingDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (context) => const _SlidingDialog(),
-  );
+  showDialog(context: context, builder: (context) => const _SlidingDialog());
 }
 
 class _SlidingDialog extends StatefulWidget {
@@ -45,12 +42,15 @@ class _SlidingDialogState extends State<_SlidingDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final double height =
+        currentPage == 0 ? 520 : MediaQuery.of(context).size.height * 0.85;
+
     return Dialog(
       backgroundColor: AppColors.black,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width,         // Full width of the screen
-        height: MediaQuery.of(context).size.height * 0.85, // 85% height of the screen
+        width: MediaQuery.of(context).size.width,
+        height: height,
         child: Stack(
           children: [
             Padding(
@@ -60,39 +60,101 @@ class _SlidingDialogState extends State<_SlidingDialog> {
                 children: [
                   // Top Buttons
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          if (currentPage != 0) {
-                            goToPage(0); // Go to page 0 if not already there
-                          }
-                        },
-                        child: Text(
-                          'Daily',
-                          style: TextStyle(
-                            color: currentPage == 0
-                                ? AppColors.primary
-                                : AppColors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                      SizedBox(
+                        width: 60,
+                        child: GestureDetector(
+                          onTap: () {
+                            if (currentPage != 0) goToPage(0);
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Daily',
+
+                                style: TextStyle(
+                                  color:
+                                      currentPage == 0
+                                          ? AppColors.primary
+                                          : AppColors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              if (currentPage == 0)
+                                Column(
+                                  children: [
+                                    const Divider(
+                                      color: AppColors.primary,
+                                      thickness: 1,
+                                      height: 1,
+                                      endIndent: 18,
+                                    ),
+                                    SizedBox(height: 3),
+                                    Divider(
+                                      color: AppColors.primary,
+                                      thickness: 1,
+                                      height: 1,
+                                      indent: 10,
+                                      endIndent: 18,
+                                    ),
+                                  ],
+                                )
+                              else
+                                const SizedBox(height: 1),
+                            ],
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10),
-                      GestureDetector(
-                        onTap: () {
-                          if (currentPage != 1) {
-                            goToPage(1); // Go to page 1 if not already there
-                          }
-                        },
-                        child: Text(
-                          'Unique',
-                          style: TextStyle(
-                            color: currentPage == 1
-                                ? AppColors.primary
-                                : AppColors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                      SizedBox(
+                        width: 60,
+                        child: GestureDetector(
+                          onTap: () {
+                            if (currentPage != 1) goToPage(1);
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Unique',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color:
+                                      currentPage == 1
+                                          ? AppColors.primary
+                                          : AppColors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              if (currentPage == 1)
+                                Column(
+                                  children: [
+                                    const Divider(
+                                      color: AppColors.primary,
+                                      thickness: 1,
+                                      height: 1,
+                                      endIndent: 2,
+                                    ),
+                                    SizedBox(height: 3),
+                                    Divider(
+                                      color: AppColors.primary,
+                                      thickness: 1,
+                                      height: 1,
+                                      indent: 18,
+                                      endIndent: 2,
+                                    ),
+                                  ],
+                                )
+                              else
+                                const SizedBox(height: 1),
+                            ],
                           ),
                         ),
                       ),
@@ -105,11 +167,9 @@ class _SlidingDialogState extends State<_SlidingDialog> {
                   Expanded(
                     child: PageView(
                       controller: _pageController,
-                      onPageChanged: (index) => setState(() => currentPage = index),
-                      children: [
-                       const  _DialogPage1(),
-                        const _DialogPage2(),
-                      ],
+                      onPageChanged:
+                          (index) => setState(() => currentPage = index),
+                      children: const [_DialogPage1(), _DialogPage2()],
                     ),
                   ),
 
@@ -118,8 +178,14 @@ class _SlidingDialogState extends State<_SlidingDialog> {
                   // Bottom Action Button
                   ElevatedButton(
                     onPressed: onActionPressed,
-                    style: AppButtonStyle.elevatedButton(AppColors.primary, AppColors.transparent),
-                    child: Text('Update Task', style: const TextStyle(color: Colors.white)),
+                    style: AppButtonStyle.elevatedButton(
+                      AppColors.primary,
+                      AppColors.transparent,
+                    ),
+                    child: const Text(
+                      'Update Task',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -135,7 +201,10 @@ class _SlidingDialogState extends State<_SlidingDialog> {
                   'assets/icons/close.svg',
                   height: 30,
                   width: 30,
-                  colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.primary,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -248,8 +317,9 @@ class _DialogPage1 extends StatelessWidget {
     );
   }
 }
+
 class _DialogPage2 extends StatelessWidget {
-   const _DialogPage2();
+  const _DialogPage2();
 
   @override
   Widget build(BuildContext context) {

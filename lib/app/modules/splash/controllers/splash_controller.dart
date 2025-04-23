@@ -1,23 +1,16 @@
 import 'package:get/get.dart';
+import 'dart:async';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    _navigateToNext();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void _navigateToNext() {
+    Timer(const Duration(seconds: 3), () {
+      Get.offNamed('/onboarding'); // Change to your target route
+    });
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

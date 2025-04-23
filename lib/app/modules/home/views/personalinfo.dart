@@ -104,13 +104,26 @@ class Personalinfo extends StatelessWidget {
 SizedBox(width: 15,),
                           SizedBox(
                             width: 180,
-                            height: 40,
+                            height: 25,
                             child: TextField(
                                 cursorColor: AppColors.primary,
 
                                 style: const TextStyle(color: AppColors.white,fontSize: 10),
                                 controller: biocontroller,
-                                decoration: AppInputDecoration.input1(hint: '')
+                                decoration: InputDecoration(
+                                 
+
+                              contentPadding: EdgeInsets.only(top: 6,left: 10),
+
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(color: AppColors.primary, width: 1),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(color: AppColors.primary, width: 1),
+                                  ),
+                                ),
                             ),
                           ),
                         ],
