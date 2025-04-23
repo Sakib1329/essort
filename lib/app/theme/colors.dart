@@ -22,4 +22,7 @@ static const facebookBlue40 = Color(0x404267B2); // #4267B2
   static const brightred = Color(0xFFFF0505);
   static const black = Colors.black;
   static const transparent = Colors.transparent;
+  static const Color softPeach = Color(0xFFFFDDD8);
+  static const Color vibrantRed = Color(0xFFFF2442);
+  static const  Color brightRed2 = Color(0xFFFF4B4C);
 }

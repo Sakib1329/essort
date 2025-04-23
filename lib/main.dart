@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'app/modules/home/controllers/personalinfocontroller.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
   Get.put(HomeController());
   Get.put(BottomSheetController());
-  Get.put(PersonalInfoController());
+
   runApp(
     GetMaterialApp(
      theme: ThemeData(

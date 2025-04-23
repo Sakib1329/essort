@@ -1,10 +1,15 @@
 import 'package:essort/app/theme/button.dart';
 import 'package:essort/app/theme/colors.dart';
+import 'package:essort/app/widgets/popupmenuButton2.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../widgets/categorycontainer.dart';
+import '../../../widgets/dialogue3.dart';
+import '../../../widgets/dialogue4.dart';
 import '../controllers/home_controller.dart';
+import 'Task add.dart';
 
 class Categorypage extends GetView<HomeController> {
   const Categorypage({super.key});
@@ -47,41 +52,61 @@ appBar: AppBar(
                 thickness: 1,),
             ),
            SizedBox(height: 20,),
-           Container(
-               width: 400,
-               height: 70,
-               decoration: BoxDecoration(
-                 image: DecorationImage(image: AssetImage( 'assets/images/img_3.png'),fit: BoxFit.fill)
-               ),
+            LongPressPopupMenu(
+onDelete: (){
+  showDialog(
+    context: context,
+    builder: (_) => MessageDialog(
+      message: 'Are you sure you want to delete this item?',
+      onPressed: () {
+        // your action
+        Navigator.pop(context);
+      },
+    ),
+  );
 
 
-           ),
-            SizedBox(height: 10,),
-            Container(
-              width: 400,
-              height: 70,
-              decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage( 'assets/images/img_4.png'),fit: BoxFit.fill)
+},
+              onRename: (){
+                TextFieldPopup.show(
+                  context,
+                  title: 'Rename the Category',
+                );
+
+
+              },
+              child: Categorycontainer(
+                  title: 'Agenda',
+
+                  backgroundAsset: 'assets/images/img_14.png',
+                svgAsset: 'assets/icons/agenda.svg',
               ),
-
-
             ),
             SizedBox(height: 10,),
-            Container(
-              width: 400,
-              height: 70,
-              decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage( 'assets/images/img_5.png'),fit: BoxFit.fill)
+            LongPressPopupMenu(
+              child: Categorycontainer(
+                title: 'Creativity',
+
+                backgroundAsset: 'assets/images/img_15.png',
+                svgAsset: 'assets/icons/creativity.svg',
               ),
-
-
             ),
             SizedBox(height: 10,),
-            Container(
-              width: 400,
-              height: 70,
-              decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage( 'assets/images/img_6.png'),fit: BoxFit.fill)
+            LongPressPopupMenu(
+              child: Categorycontainer(
+                title: 'Learning',
+
+                backgroundAsset: 'assets/images/img_16.png',
+                svgAsset: 'assets/icons/learning.svg',
+              ),
+            ),
+            SizedBox(height: 10,),
+            LongPressPopupMenu(
+              child: Categorycontainer(
+                title: 'Progress',
+
+                backgroundAsset: 'assets/images/img_11.png',
+                svgAsset: 'assets/icons/progress.svg',
               ),
             ),
             Spacer(),
@@ -91,6 +116,9 @@ appBar: AppBar(
 
                 ElevatedButton(onPressed: (){}, child: Text('Add New Section',style: TextStyle(color: Colors.white),),
                 style: AppButtonStyle.elevatedButton(AppColors.primary,AppColors.transparent),),
+                SizedBox(height: 20,),
+                ElevatedButton(onPressed: (){}, child: Text('Add New Section',style: TextStyle(color: Colors.white),),
+                  style: AppButtonStyle.elevatedButton(AppColors.primary,AppColors.transparent),),
               ],
             ),
             SizedBox(height: 10,)

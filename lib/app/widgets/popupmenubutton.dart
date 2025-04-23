@@ -6,9 +6,11 @@ class TaskPopupMenu extends StatelessWidget {
   final void Function()? onEdit;
   final void Function()? onNotify;
   final void Function()? onDelete;
+  final bool ismoriz;
 
   const TaskPopupMenu({
     super.key,
+    required this.ismoriz,
     this.onEdit,
     this.onNotify,
     this.onDelete,
@@ -17,7 +19,11 @@ class TaskPopupMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<int>(
-      icon: const Icon(Icons.more_horiz, color: Colors.white),
+      icon: Icon(
+          ismoriz==true
+          ?Icons.more_horiz
+          :Icons.more_vert,
+          color: Colors.white),
       color: AppColors.darkBackground,
 
       offset: const Offset(0, 40),
@@ -42,7 +48,9 @@ class TaskPopupMenu extends StatelessWidget {
           value: 1,
           child: Center(
             child: SvgPicture.asset(
-              'assets/icons/reminder.svg',
+              ismoriz==true
+              ?'assets/icons/reminder.svg'
+              :'assets/icons/rename.svg',
               height: 24,
               color: Colors.white,
             ),

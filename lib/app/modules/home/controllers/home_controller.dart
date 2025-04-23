@@ -16,4 +16,14 @@ class HomeController extends GetxController {
   void updateDates(List<DateTime?> newDates) {
     dates.value = newDates;
   }
+  //personnalinfo
+  RxBool isNameEditable = false.obs;
+  RxBool isPasswordEditable = false.obs;
+
+  void toggleNameEdit() {
+    print("Toggling name edit");
+    isNameEditable.toggle();
+  }
+
+  void togglePasswordEdit() => isPasswordEditable.toggle();
 }

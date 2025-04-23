@@ -249,7 +249,9 @@ class Homepage extends GetView<HomeController> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(TaskAdd(),transition: Transition.rightToLeft);
+                  },
                   style: AppButtonStyle.elevatedButton(
                     AppColors.primary,
                     AppColors.transparent,

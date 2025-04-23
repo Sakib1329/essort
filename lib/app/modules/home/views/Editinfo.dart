@@ -2,20 +2,19 @@ import 'dart:io';
 import 'package:essort/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../theme/button.dart';
 import '../../../theme/colors.dart';
 import '../../../theme/textfield.dart';
 import '../../../widgets/Customtextfield.dart';
 import '../controllers/bottomsheet+image.dart';
-import 'Editinfo.dart';
-import 'editpass.dart';
 
 
-class Personalinfo extends StatelessWidget {
-  Personalinfo({super.key});
+class Editinfo extends StatelessWidget {
+  Editinfo({super.key});
 
   final BottomSheetController bs = Get.find();
   final HomeController controller = Get.find();
- final TextEditingController biocontroller=TextEditingController();
+  final TextEditingController biocontroller=TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -91,17 +90,17 @@ class Personalinfo extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
 
                     children: [
-                       Padding(
-                         padding: const EdgeInsets.only(left: 90),
-                         child: Text("Mira", style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color:  AppColors.white)),
-                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 90),
+                        child: Text("Mira", style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color:  AppColors.white)),
+                      ),
                       const SizedBox(height: 4),
                       Row(
 
 
                         children: [
-                           Text("Bio :", style: TextStyle(fontSize: 16, color:  AppColors.white)),
-SizedBox(width: 15,),
+                          Text("Bio :", style: TextStyle(fontSize: 16, color:  AppColors.white)),
+                          SizedBox(width: 15,),
                           SizedBox(
                             width: 180,
                             height: 40,
@@ -120,7 +119,8 @@ SizedBox(width: 15,),
                 ],
               ),
 
-              const SizedBox(height: 40),
+
+              const SizedBox(height: 20),
 
               /// Editable Name Field
               Obx(() => CustomTextFieldForSetting(
@@ -128,9 +128,7 @@ SizedBox(width: 15,),
                 hintText: "Mira",
                 controller: nameController,
                 suffixIconPath: "assets/icons/edit.svg",
-                onSuffixTap: (){
-                  Get.to(Editinfo(),transition: Transition.rightToLeft);
-                },
+                onSuffixTap: controller.toggleNameEdit,
                 isEditable: controller.isNameEditable.value,
                 isPassword: false,
               )),
@@ -148,21 +146,6 @@ SizedBox(width: 15,),
 
               const SizedBox(height: 20),
 
-              /// Editable Password Field
-              Obx(() => CustomTextFieldForSetting(
-                label: "Password",
-                hintText: "********",
-                controller: passwordController,
-                isPassword: true,
-                suffixIconPath: "assets/icons/edit.svg",
-                isEditable: controller.isPasswordEditable.value,
-                onSuffixTap:  (){
-                  Get.to(Editpass(),transition: Transition.rightToLeft);
-                },
-              )),
-
-              const SizedBox(height: 20),
-
               /// Birthday
               SizedBox(
                 width: 200,
@@ -176,6 +159,23 @@ SizedBox(width: 15,),
                   onSuffixTap: () {},
                 ),
               ),
+              SizedBox(height: 150,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  OutlinedButton(onPressed: (){
+
+                  },
+                      style: AppButtonStyle.outlined(AppColors.transparent, AppColors.primary),
+                      child:Text('Save',style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: 'Schuyler'),) ),
+                  SizedBox(height: 20,),
+                  OutlinedButton(onPressed: (){},
+                      style: AppButtonStyle.outlined(AppColors.primary, AppColors.black),
+                      child:Text('Cancel',style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: 'Schuyler'),) ),
+                ],
+              ),
+
+
 
             ],
           ),

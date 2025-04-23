@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 
 
 import '../theme/textfield.dart';
+import 'Aidialogue.dart';
+import 'categorypopup.dart';
 
 class LabeledExpandableTextField extends StatelessWidget {
   final String label;
@@ -41,7 +43,10 @@ class LabeledExpandableTextField extends StatelessWidget {
 
             ),
             IconButton(
-              onPressed: (){},
+              onPressed: (){
+
+                showSlidingDialog(context);
+              },
               icon: SvgPicture.asset(
                 svgPath,
                 height: 40,

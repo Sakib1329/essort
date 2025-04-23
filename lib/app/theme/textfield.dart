@@ -23,12 +23,12 @@ class AppInputDecoration {
       borderSide: BorderSide(color: AppColors.primary, width: 1),
     ),
   );
-  static InputDecoration input3({String? hint}) => InputDecoration(
+  static InputDecoration input3({String? hint, hintcolor}) => InputDecoration(
     hintText: hint,
 
     hintStyle: TextStyle(
 
-      color: AppColors.white50,
+      color: hintcolor,
       letterSpacing: 2,
       fontWeight: FontWeight.w400,
     ),
@@ -52,31 +52,30 @@ enabledBorder: UnderlineInputBorder(
   }) =>
       InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(color: AppColors.white),
+        hintStyle: TextStyle(color: AppColors.lightgray),
+        filled: true,
+        fillColor: AppColors.black,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.primary, width: 1),
+          borderSide: BorderSide(color: AppColors.primary,width: 1),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.primary, width: 1),
+          borderSide: BorderSide(color: AppColors.primary,width: 5),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.primary, width: 1),
+          borderSide: BorderSide(color:AppColors.primary),
         ),
+// If a suffixIconPath is provided, show the SVG as a button
         suffixIcon: suffixIconPath != null
             ? IconButton(
-          onPressed: () {
-            print("Tapped!");
-            if (onSuffixTap != null) onSuffixTap!();
-          },
           icon: SvgPicture.asset(
-            suffixIconPath,
-            width: 24,
-            height: 24,
-            color: AppColors.primary,
+            suffixIconPath!,
+            width: 20,
+            height: 20,
           ),
+          onPressed: onSuffixTap, // Action when icon is pressed
         )
             : null,
       );

@@ -78,6 +78,7 @@ class Hometile extends StatelessWidget {
                 ),
               ),
               TaskPopupMenu(
+                ismoriz: true,
                 onEdit: () {
                   // Edit logic
                 },
